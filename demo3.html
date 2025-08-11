@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ultra Supplements — WhatsApp Order Demo</title>
+  <meta name="description" content="Supplements Store: Add-to-cart + WhatsApp order. Cart details auto in message. No contact save needed.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    .glass { background:rgba(255,255,255,.13); backdrop-filter:blur(6px); }
+    ::selection { background:#f59e0b3d; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-teal-50 to-orange-50 min-h-screen text-gray-900">
+
+  <header class="bg-gradient-to-r from-teal-600 to-orange-400 text-white py-4 shadow">
+    <div class="max-w-4xl mx-auto flex items-center justify-between px-3">
+      <div class="flex items-center gap-2">
+        <div class="text-2xl font-bold">💪 Ultra Supplements</div>
+        <span class="bg-white/30 px-2 py-1 rounded text-xs">Demo Store</span>
+      </div>
+      <a href="#cart" class="text-white underline font-semibold flex items-center gap-1">
+        <svg class="w-5 h-5 inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l1.6-8H6.4zm0 0l-1 2h12"></path></svg>
+        Cart
+      </a>
+    </div>
+  </header>
+
+  <!-- Product List -->
+  <main class="max-w-4xl mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-4">Shop Supplements</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+      <!-- Product Card Examples -->
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1599933691860-6d7f2d1b4e10?q=80&w=600&auto=format&fit=crop" alt="Whey Protein" class="h-32 object-cover rounded mb-2">
+        <div class="font-bold mb-1">Whey Protein 2kg</div>
+        <div class="text-sm text-gray-600 mb-1">High quality whey isolate/concentrate</div>
+        <div class="text-lg font-bold mb-2">₹2499</div>
+        <div class="flex items-center gap-2">
+          <input type="number" min="1" value="1" class="w-14 p-1 border rounded" id="qty-0">
+          <button onclick="addToCart(0)" class="px-3 py-2 text-white bg-teal-600 rounded shadow hover:bg-teal-700 text-sm font-semibold">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1596811885549-3a0d7b9b0c2f?q=80&w=600&auto=format&fit=crop" alt="Creatine" class="h-32 object-cover rounded mb-2">
+        <div class="font-bold mb-1">Creatine Monohydrate</div>
+        <div class="text-sm text-gray-600 mb-1">Micronized creatine for strength</div>
+        <div class="text-lg font-bold mb-2">₹799</div>
+        <div class="flex items-center gap-2">
+          <input type="number" min="1" value="1" class="w-14 p-1 border rounded" id="qty-1">
+          <button onclick="addToCart(1)" class="px-3 py-2 text-white bg-teal-600 rounded shadow hover:bg-teal-700 text-sm font-semibold">Add to Cart</button>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=600&auto=format&fit=crop" alt="Pre-workout" class="h-32 object-cover rounded mb-2">
+        <div class="font-bold mb-1">Pre Workout</div>
+        <div class="text-sm text-gray-600 mb-1">Energy + Focus Preworkout</div>
+        <div class="text-lg font-bold mb-2">₹899</div>
+        <div class="flex items-center gap-2">
+          <input type="number" min="1" value="1" class="w-14 p-1 border rounded" id="qty-2">
+          <button onclick="addToCart(2)" class="px-3 py-2 text-white bg-teal-600 rounded shadow hover:bg-teal-700 text-sm font-semibold">Add to Cart</button>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1613145992038-6a3b1e40f4a4?q=80&w=600&auto=format&fit=crop" alt="BCAA" class="h-32 object-cover rounded mb-2">
+        <div class="font-bold mb-1">BCAA</div>
+        <div class="text-sm text-gray-600 mb-1">Amino acids for recovery</div>
+        <div class="text-lg font-bold mb-2">₹599</div>
+        <div class="flex items-center gap-2">
+          <input type="number" min="1" value="1" class="w-14 p-1 border rounded" id="qty-3">
+          <button onclick="addToCart(3)" class="px-3 py-2 text-white bg-teal-600 rounded shadow hover:bg-teal-700 text-sm font-semibold">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1582719478274-6b8b8c8b9b8a?q=80&w=600&auto=format&fit=crop" alt="Multivitamin" class="h-32 object-cover rounded mb-2">
+        <div class="font-bold mb-1">Multivitamin</div>
+        <div class="text-sm text-gray-600 mb-1">Daily health support</div>
+        <div class="text-lg font-bold mb-2">₹399</div>
+        <div class="flex items-center gap-2">
+          <input type="number" min="1" value="1" class="w-14 p-1 border rounded" id="qty-4">
+          <button onclick="addToCart(4)" class="px-3 py-2 text-white bg-teal-600 rounded shadow hover:bg-teal-700 text-sm font-semibold">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=600&auto=format&fit=crop" alt="Omega 3" class="h-32 object-cover rounded mb-2">
+        <div class="font-bold mb-1">Omega 3</div>
+        <div class="text-sm text-gray-600 mb-1">Healthy fats for recovery</div>
+        <div class="text-lg font-bold mb-2">₹499</div>
+        <div class="flex items-center gap-2">
+          <input type="number" min="1" value="1" class="w-14 p-1 border rounded" id="qty-5">
+          <button onclick="addToCart(5)" class="px-3 py-2 text-white bg-teal-600 rounded shadow hover:bg-teal-700 text-sm font-semibold">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Section -->
+  <section id="cart" class="max-w-4xl mx-auto p-6 mt-8 mb-6 bg-white rounded-lg shadow glass">
+    <h3 class="text-xl font-bold mb-2">🛒 Your Cart</h3>
+    <div id="cart-list" class="mb-4 text-gray-700"></div>
+    <div class="flex items-center gap-4">
+      <div class="font-bold text-lg">Total: ₹<span id="cart-total">0</span></div>
+      <button onclick="buyNow()" class="px-5 py-2 bg-orange-500 text-white rounded-full shadow hover:bg-orange-600 font-semibold text-md">Buy Now via WhatsApp</button>
+    </div>
+    <div id="whatsapp-msg" class="mt-3 text-sm text-green-700"></div>
+  </section>
+
+  <footer class="text-center text-gray-500 py-6">
+    © Ultra Supplements — Demo. For portfolio testing only.
+  </footer>
+
+  <!-- JS — Cart Logic + WhatsApp Integration -->
+  <script>
+    // ---- Product Data ----
+    const products = [
+      {name:"Whey Protein 2kg", price:2499},
+      {name:"Creatine Monohydrate", price:799},
+      {name:"Pre Workout", price:899},
+      {name:"BCAA", price:599},
+      {name:"Multivitamin", price:399},
+      {name:"Omega 3", price:499}
+    ];
+
+    let cart = [];
+
+    function addToCart(idx) {
+      const qty = parseInt(document.getElementById("qty-"+idx).value) || 1;
+      if (qty < 1) return;
+      const found = cart.find(item => item.idx === idx);
+      if (found) {
+        found.qty += qty;
+      } else {
+        cart.push({idx, qty});
+      }
+      updateCart();
+    }
+
+    function updateCart() {
+      let html = "";
+      let total = 0;
+      cart.forEach((item, i) => {
+        const prod = products[item.idx];
+        const sub = prod.price * item.qty;
+        total += sub;
+        html += `
+          <div class="flex items-center gap-4 mb-2">
+            <div class="font-bold">${prod.name}</div>
+            <div>₹${prod.price} x ${item.qty}</div>
+            <div class="font-semibold">= ₹${sub}</div>
+            <button onclick="removeFromCart(${item.idx})" class="ml-2 text-red-600 text-sm underline">Remove</button>
+          </div>`;
+      });
+      document.getElementById("cart-list").innerHTML = html || "<div class='text-sm text-gray-500'>Cart empty — Add items!</div>";
+      document.getElementById("cart-total").textContent = total;
+    }
+
+    function removeFromCart(idx) {
+      cart = cart.filter(item => item.idx !== idx);
+      updateCart();
+    }
+
+    // ---- WhatsApp Integration ----
+    function buyNow() {
+      if (!cart.length) {
+        alert("Cart is empty!"); return;
+      }
+      let msg = "Hello, I want to order the following supplements:\n";
+      let total = 0;
+      cart.forEach(item => {
+        const prod = products[item.idx];
+        const sub = prod.price * item.qty;
+        total += sub;
+        msg += `• ${prod.name} — Qty: ${item.qty} — ₹${sub}\n`;
+      });
+      msg += `\nTotal Amount: ₹${total}\n\nPlease confirm availability & delivery options.`;
+      const waMsg = encodeURIComponent(msg);
+      const waNum = "919935164026"; // --------- Yahi naya number hai! -----------
+      const waURL = `https://wa.me/${waNum}?text=${waMsg}`;
+      document.getElementById("whatsapp-msg").innerHTML = `<a href="${waURL}" target="_blank" class="px-4 py-2 bg-teal-600 text-white rounded shadow hover:bg-orange-500 font-semibold">Click to send WhatsApp Order</a>`;
+      setTimeout(()=>{ document.getElementById("whatsapp-msg").innerHTML = ""; },7000);
+      window.open(waURL, "_blank");
+    }
+
+    // Initial Cart UI
+    updateCart();
+  </script>
+</body>
+</html>
